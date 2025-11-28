@@ -1163,10 +1163,11 @@ namespace WorldPainter
 			if (zIndex < 0) zIndex = 0; else if (zIndex >= Height) zIndex = Height - 1;
 			ushort v16 = data[zIndex * Width + xIndex];
 			int mapY = sapi.World.BlockAccessor.MapSizeY;
-			int h8 = v16 >> 8;
-			if (h8 < 1) h8 = 1;
-			if (h8 > mapY - 2) h8 = mapY - 2;
-			return h8;
+			int y = v16; // Updated in release 1.5, reads ushort instead of byte
+			if (y < 1) y = 1;
+			if (y > mapY - 2) y = mapY - 2;
+
+			return y;
 		}
 
 		/// ┌─────────────────────────┐ Combined layers are effectively 0-15.
